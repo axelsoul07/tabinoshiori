@@ -11,13 +11,17 @@ html
 
     link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
     = stylesheet_link_tag  'application', media: 'all', 'data-turbolinks-track': 'reload'
+    link rel="stylesheet" href="/app/assets/stylesheets/style.css"
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
 
-  body
-    = render 'layouts/navbar'
+  - if logged_in?
+    body
+  - else
+    body class="top_image"
+      = render 'layouts/navbar'
+  
+      div class="container"
+        = render 'layouts/flash_messages'
 
-    div class="container"
-      = render 'layouts/flash_messages'
-
-      = yield
+        = yield

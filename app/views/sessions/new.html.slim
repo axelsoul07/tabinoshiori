@@ -1,16 +1,18 @@
-.text-center
-  h1
-    ログイン
 .row
-  .col-md-6.col-md-offset-3
-    = form_for(:session, url: login_path) do |f|
-      .form-group
-        = f.label :email, 'Email'
-        = f.email_field :email, class: 'form-control'
-      .form-group
-        = f.label :password, 'Password'
-        = f.password_field :password, class: 'form-control'
-      = f.submit 'Log in', class: 'btn btn-primary btn-block'
-    p
-      |新規ユーザ登録はされましたか？ 
-      = link_to 'ユーザ登録', signup_path
+.col-md-6.col-md-offset-3.top_space
+  .panel.panel-default
+    .panel-heading.text-center
+      h1
+        |ログイン
+    .panel-body
+      = form_for(:session, url: login_path) do |f|
+        .form-group
+          = f.label :email, 'メールアドレス'
+          = f.email_field :email, class: 'form-control'
+        .form-group
+          = f.label :password, 'パスワード'
+          = f.password_field :password, class: 'form-control'
+        = f.submit 'ログイン', class: 'btn btn-primary btn-block'
+  p.
+    |新規ユーザ登録はされましたか？　
+    = link_to 'ユーザ登録', signup_path, class: 'btn btn-primary'
