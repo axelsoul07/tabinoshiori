@@ -1,21 +1,27 @@
 .row
-  aside.col-xs-4
-    .panel.panel-default
-      .panel-heading
-        h3.panel-title
-          = @user.name
-      .panel-body
-        |  <img class="media-object img-rounded img-responsive" src="
-        = gravatar_url(@user, { size: 500 })
-        | " alt=""> 
-  .col-xs-8
-    ul.nav.nav-tabs.nav-justified
-      li
-        a[href="#"]
-          | 旅の栞
-      li
-        a[href="#"]
-          | Followings
-      li
-        a[href="#"]
-          | Followers
+aside.col-xs-4.top_space
+  .panel.panel-default
+    .panel-heading
+      h3.panel-title
+        = @user.name
+    .panel-body
+      |  <img class="media-object img-rounded img-responsive" src="
+      = gravatar_url(@user, { size: 500 })
+      | " alt=""> 
+.col-xs-8
+  ul.nav.nav-tabs.nav-justified.top_space
+    | <li class="
+    = 'active' if current_page?(user_path(@user)) 
+    |">
+    = link_to user_path(@user) do 
+      |旅の栞 <span class="badge">
+      = @count_plans 
+      |</span>
+    |</li>
+    li
+      a[href="#"]
+        | フォロー
+    li
+      a[href="#"]
+        | フォロワー
+  = render 'plans/plans', plans: @plans

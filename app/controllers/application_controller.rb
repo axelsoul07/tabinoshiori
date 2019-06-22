@@ -10,4 +10,8 @@ class ApplicationController < ActionController::Base
       redirect_to login_url
     end
   end
+  
+  def counts(user)
+    @count_plans = user.plans.count
+  end
 end

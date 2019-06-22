@@ -6,7 +6,7 @@ html
     meta name="viewport" content="width=device-width, initial-scale=1"
 
     title
-      旅の栞
+      |旅の栞
     = csrf_meta_tags
 
     link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -19,9 +19,9 @@ html
     body
   - else
     body class="top_image"
-      = render 'layouts/navbar'
+  = render 'layouts/navbar'
   
-      div class="container"
-        = render 'layouts/flash_messages'
+  div class="container"
+    = render 'layouts/flash_messages'
 
-        = yield
+    = yield

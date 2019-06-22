@@ -1,9 +1,15 @@
 - if logged_in?
-  p
-    | ログイン完了ユーザ: 
-    = current_user.name
+  .row
+  aside.col-md-4.top_space
+    = form_for(@plan) do |f|
+      .form-group
+        = f.text_field :title, class: 'form-control', rows: 5
+      = f.submit '旅の栞作成', class: 'btn btn-primary btn-block'
+  .col-xs-8.top_space
+    = render 'plans/plans', plans: @plans
 - else
-  .center.jumbotron.trans_back
+  .row
+  .center.jumbotron.trans_back.top_space
     .text-center
       h1
         | 旅の栞が生みだす時間

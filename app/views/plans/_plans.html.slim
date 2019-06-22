@@ -1,0 +1,21 @@
+ul.media-list
+  - plans.each do |plan|
+    li.media
+      .media-left
+        |<img class="media-object img-rounded" src="
+        = gravatar_url(plan.user, { size: 50 }) 
+        |" alt="">
+      .media-body
+        div
+          = link_to plan.user.name, user_path(plan.user) 
+          | <span class="text-muted"> 旅の栞作成日 
+          = plan.created_at
+          |</span>
+        div
+          p
+            = plan.title
+        div
+          - if current_user == plan.user
+            = link_to "削除", plan, method: :delete, data: { confirm: "旅の栞を削除してもよろしいですか？" }, class: 'btn btn-danger btn-xs'
+
+  = paginate plans
