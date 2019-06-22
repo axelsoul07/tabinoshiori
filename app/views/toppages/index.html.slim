@@ -1,5 +1,10 @@
-.center.jumbotron
-  .text-center
-    h1
-      | 旅の栞⇒素敵な時間
-    = link_to 'ユーザ登録はこちらから！', signup_path, class: 'btn btn-lg btn-primary'
+- if logged_in?
+  p
+    | ログイン完了ユーザ: 
+    = current_user.name
+- else
+  .center.jumbotron
+    .text-center
+      h1
+        | 旅の栞⇒素敵な時間
+      = link_to 'ユーザ登録はこちらから！', signup_path, class: 'btn btn-lg btn-primary'
