@@ -10,7 +10,7 @@ aside.col-xs-4
       | " alt=""> 
   = render 'relationships/follow_button', user: @user
 .col-xs-8
-  ul.nav.nav-tabs.nav-justified
+  ul.nav.nav-tabs.nav-justified.bottom_space
     | <li class="
     = 'active' if current_page?(user_path(@user)) 
     |">

@@ -8,7 +8,7 @@ class PlansController < ApplicationController
       flash[:success] = '旅行プランを作成しました'
       redirect_to root_url
     else
-      @plans = current_user.plans.order('created_at DESC').page(params[:page])
+      @plans = current_user.feed_plans.order('created_at DESC').page(params[:page])
       flash.now[:danger] = '旅行プランの作成に失敗しました。'
       render 'toppages/index'
     end
