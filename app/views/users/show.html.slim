@@ -1,5 +1,5 @@
 .row
-aside.col-xs-4.top_space
+aside.col-xs-4
   .panel.panel-default
     .panel-heading
       h3.panel-title
@@ -10,7 +10,7 @@ aside.col-xs-4.top_space
       | " alt=""> 
   = render 'relationships/follow_button', user: @user
 .col-xs-8
-  ul.nav.nav-tabs.nav-justified.top_space
+  ul.nav.nav-tabs.nav-justified
     | <li class="
     = 'active' if current_page?(user_path(@user)) 
     |">
