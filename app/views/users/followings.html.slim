@@ -5,9 +5,9 @@ aside.col-xs-4.top_space
       h3.panel-title
         = @user.name
     .panel-body
-      |  <img class="media-object img-rounded img-responsive" src="
+      | <img class="media-object img-rounded img-responsive" src="
       = gravatar_url(@user, { size: 500 })
-      | " alt=""> 
+      |" alt="">
   = render 'relationships/follow_button', user: @user
 .col-xs-8
   ul.nav.nav-tabs.nav-justified.top_space
@@ -35,4 +35,4 @@ aside.col-xs-4.top_space
       = @count_followers 
       |</span>
     |</li>
-  = render 'plans/plans', plans: @plans
+  = render 'users', users: @followings
