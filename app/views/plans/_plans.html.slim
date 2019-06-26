@@ -8,15 +8,15 @@ ul.media-list
       .media-body
         div
           = link_to plan.user.name, user_path(plan.user) 
-          | <span class="text-muted"> 旅の栞作成日 
-          = plan.created_at
+          | <span class="text-muted"> 作成日 
+          = plan.created_at.strftime("%Y-%m-%d %H:%M:%S")
           |</span>
         div
           p
-            = plan.title
-        div.button_line
+            = link_to plan.title, plan
+        .button_line
           = render 'favorites/favorite_button', plan: plan
-        div.button_line
+        .button_line
           - if current_user == plan.user
             = link_to "", plan, method: :delete, data: { confirm: "旅の栞を削除してもよろしいですか？" }, class: 'btn btn-danger btn-xs glyphicon glyphicon-trash'
 

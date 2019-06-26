@@ -13,6 +13,10 @@ class PlansController < ApplicationController
       render 'toppages/index'
     end
   end
+  
+  def show
+    @plan = Plan.find(params[:id])
+  end
 
   def destroy
     @plan.destroy
