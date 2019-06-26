@@ -14,8 +14,10 @@ ul.media-list
         div
           p
             = plan.title
-        div
+        div.button_line
+          = render 'favorites/favorite_button', plan: plan
+        div.button_line
           - if current_user == plan.user
-            = link_to "削除", plan, method: :delete, data: { confirm: "旅の栞を削除してもよろしいですか？" }, class: 'btn btn-danger btn-xs'
+            = link_to "", plan, method: :delete, data: { confirm: "旅の栞を削除してもよろしいですか？" }, class: 'btn btn-danger btn-xs glyphicon glyphicon-trash'
 
   = paginate plans

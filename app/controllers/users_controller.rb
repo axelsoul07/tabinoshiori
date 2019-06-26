@@ -1,11 +1,12 @@
 class UsersController < ApplicationController
-  before_action :require_user_logged_in, only: [:index, :show, :followings, :followers]
+  before_action :require_user_logged_in, only: [:index, :show, :followings, :followers, :likes]
   def index
     @users = User.all.page(params[:page])
   end
 
   def show
     @user = User.find(params[:id])
+    @plan = @user.plans.build
     @plans = @user.plans.order('created_at DESC').page(params[:page])
     counts(@user)
   end
@@ -37,6 +38,28 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @followers = @user.followers.page(params[:page])
     counts(@user)
+  end
+
+  def likes
+    @user = User.find(params[:id])
+    @likes = @user.favoritings.page(params[:page])
+    counts(@user)
+    @plan = @user.plans.build
+    @plans = @user.feed_favorite_plans.order('created_at DESC').page(params[:page])
+  end
+  
+  begin
+    def favoritings
+      @user = User.find(params[:id])
+      @favoritings = @user.favoritings.page(params[:page])
+      counts(@user)
+    end
+    
+    def favoriters
+      @user = User.find(params[:id])
+      @favoriters = @user.favoriters.page(params[:page])
+      counts(@user)
+    end
   end
 
   private

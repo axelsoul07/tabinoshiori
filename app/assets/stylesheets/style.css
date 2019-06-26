@@ -11,3 +11,14 @@
 .bottom_space {
     margin-bottom: 20px;
 }
+.button_line{
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 10px;
+}
+.favorite {
+    margin-right: 10px;
+}
+.glyphicon-star:before {
+    color: orange;
+}

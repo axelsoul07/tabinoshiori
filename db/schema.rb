@@ -10,13 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190623052802) do
+ActiveRecord::Schema.define(version: 20190625074932) do
+
+  create_table "favorites", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id",    null: false
+    t.integer  "plan_id",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["plan_id"], name: "index_favorites_on_plan_id", using: :btree
+    t.index ["user_id", "plan_id"], name: "index_favorites_on_user_id_and_plan_id", unique: true, using: :btree
+    t.index ["user_id"], name: "index_favorites_on_user_id", using: :btree
+  end
 
   create_table "plans", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "title"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.integer  "favorites_count", default: 0, null: false
     t.index ["user_id"], name: "index_plans_on_user_id", using: :btree
   end
 

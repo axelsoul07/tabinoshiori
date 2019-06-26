@@ -54,3 +54,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'kaminari'
 gem 'slim-rails'
+
+gem 'counter_culture', '~> 1.8'

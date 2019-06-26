@@ -35,4 +35,12 @@ aside.col-xs-4
       = @count_followers 
       |</span>
     |</li>
+    | <li class="
+    = 'active' if current_page?(likes_user_path(@user)) 
+    |">
+    = link_to likes_user_path(@user) do
+      |お気に入り <span class="badge">
+      = @count_favoritings 
+      |</span>
+    |</li>
   = render 'plans/plans', plans: @plans
