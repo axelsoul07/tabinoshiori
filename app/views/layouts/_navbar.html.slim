@@ -26,6 +26,9 @@ header
                 
                 li
                   = link_to 'ログアウト', logout_path, method: :delete
+                li
+                  = link_to "アカウントの削除", @user, method: :delete, data: { confirm: "旅の栞が消えますがアカウントを削除してもよろしいですか？" }, class: ''
+
           - else
             li
               = link_to 'ユーザ登録', signup_path
