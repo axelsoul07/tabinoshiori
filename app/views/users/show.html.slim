@@ -6,8 +6,11 @@ aside.col-xs-4
       h3.panel-title
         = @user.name
     .panel-body
-      |  <img class="media-object img-rounded img-responsive" src="
-      = gravatar_url(@user, { size: 500 })
+      | <img class="media-object img-rounded img-responsive" src="/user_images/
+      -unless (@user.image)
+        | no_image.jpg
+      -else
+        = @user.image
       | " alt=""> 
   = render 'relationships/follow_button', user: @user
   - if current_user == @user

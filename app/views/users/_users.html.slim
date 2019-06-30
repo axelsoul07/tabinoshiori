@@ -3,9 +3,12 @@
     - users.each do |user|
       li.media
         .media-left
-          |  <img class="media-object img-rounded" src="
-          = gravatar_url(user, { size: 50 })
-          | " alt=""> 
+          | <img class="media-object img-rounded" src="/user_images/
+          -unless (user.image)
+            | no_image.jpg
+          -else
+            = user.image
+          | " alt="" width="50" height="50"> 
         .media-body
           div
             = user.name

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190626155057) do
+ActiveRecord::Schema.define(version: 20190630165023) do
 
   create_table "details", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "plan_id"
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 20190626155057) do
     t.string   "password_digest"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.string   "image"
   end
 
   add_foreign_key "details", "plans"

@@ -36,7 +36,19 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     
     if @user.update(user_params_update)
-      flash[:success] = 'アカウントは正常に更新されました'
+      #画像ファイル取得
+      file = params[:user][:image]
+      if !file.nil?
+        file_name = "#{@user.id}.jpg"
+
+        File.open("public/user_images/#{file_name}", 'wb') {|f| 
+          f.write(file.read)
+        }
+        @user = User.find(params[:id])
+        @user.update(image: file_name)
+        flash[:success] = 'アカウントは正常に更新されました'
+      end
+
       redirect_to user_path
     else
       flash.now[:danger] = 'アカウントの更新に失敗しました。'
@@ -94,5 +106,8 @@ class UsersController < ApplicationController
   
   def user_params_update
     params.require(:user).permit(:name, :email)
+  end
+  def user_params_image
+    params.require(:user).permit(:image)
   end
 end

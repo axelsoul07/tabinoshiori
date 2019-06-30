@@ -2,9 +2,12 @@ ul.media-list
   - plans.each do |plan|
     li.media
       .media-left
-        |<img class="media-object img-rounded" src="
-        = gravatar_url(plan.user, { size: 50 }) 
-        |" alt="">
+        | <img class="media-object img-rounded" src="/user_images/
+        -unless (plan.user.image)
+          | no_image.jpg
+        -else
+          = plan.user.image
+        | " alt="" width="50" height="50"> 
       .media-body
         div
           = link_to plan.user.name, user_path(plan.user) 
