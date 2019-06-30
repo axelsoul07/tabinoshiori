@@ -5,6 +5,8 @@
     .panel-heading.text-center
       h1
         = @plan.title
+        .btn_show_favorite
+          = render 'favorites/favorite_button', plan: @plan
     .panel-body
       - total = 0
       - @details.each_with_index do |detail, i|
