@@ -18,6 +18,22 @@ class PlansController < ApplicationController
     @plan = Plan.find(params[:id])
     @details = @plan.details.order('start_at ASC')
   end
+  
+  def edit
+    @plan = Plan.find(params[:id])
+  end
+
+  def update
+    @plan = Plan.find(params[:id])
+
+    if @plan.update(plan_params)
+      flash[:success] = '旅の栞名は正常に更新されました'
+      redirect_to plan_path
+    else
+      flash.now[:danger] = '旅の栞名の更新に失敗しました。'
+      render :edit
+    end
+  end
 
   def destroy
     @plan.destroy

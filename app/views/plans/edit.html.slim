@@ -1,0 +1,12 @@
+= provide(:title, "旅の栞名修正")
+.row
+.col-md-6.col-md-offset-3.top_space
+  .panel.panel-default
+    .panel-heading.text-center
+      h1
+        |旅の栞名修正
+    .panel-body
+      = form_for(@plan) do |f|
+        .form-group
+          = f.text_field :title, class: 'form-control', rows: 5
+        = f.submit '更新', class: 'btn btn-primary btn-block'

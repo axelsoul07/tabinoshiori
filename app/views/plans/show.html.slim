@@ -7,6 +7,9 @@
         = @plan.title
         .btn_show_favorite
           = render 'favorites/favorite_button', plan: @plan
+        - if current_user == @plan.user
+          .btn_show_plan_edit
+            = link_to '編集', edit_plan_path(@plan), class: 'btn btn-primary btn_detail_new btn-xs'
     .panel-body
       - total = 0
       - @details.each_with_index do |detail, i|

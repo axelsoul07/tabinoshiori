@@ -81,7 +81,8 @@
     margin-bottom: 8px;
     margin-left: 70px;
 }
-.btn_show_favorite {
+.btn_show_favorite,
+.btn_show_plan_edit {
     display: inline-block;
     margin-left: 10px;
 }

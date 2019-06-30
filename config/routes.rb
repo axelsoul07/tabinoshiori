@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   end
   
   
-  resources :plans, only: [:create, :destroy, :show] do
+  resources :plans, only: [:create, :edit, :update, :destroy, :show] do
     member do
       resources :details, only: [:new, :create]
       resources :details do
