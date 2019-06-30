@@ -56,3 +56,5 @@ gem 'kaminari'
 gem 'slim-rails'
 
 gem 'counter_culture', '~> 1.8'
+
+gem 'rails-i18n'

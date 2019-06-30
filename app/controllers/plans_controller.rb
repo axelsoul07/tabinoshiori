@@ -16,6 +16,7 @@ class PlansController < ApplicationController
   
   def show
     @plan = Plan.find(params[:id])
+    @details = @plan.details.order('start_at ASC')
   end
 
   def destroy
@@ -35,5 +36,9 @@ class PlansController < ApplicationController
     unless @plan
       redirect_to root_url
     end  
+  end
+  
+  def plan_id
+    params[:id]
   end
 end

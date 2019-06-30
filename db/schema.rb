@@ -10,7 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190625074932) do
+ActiveRecord::Schema.define(version: 20190626155057) do
+
+  create_table "details", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "plan_id"
+    t.string   "destination"
+    t.integer  "amount",      default: 0
+    t.string   "content"
+    t.datetime "start_at"
+    t.datetime "end_at"
+    t.string   "address"
+    t.string   "site_url"
+    t.string   "phone"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.index ["plan_id"], name: "index_details_on_plan_id", using: :btree
+  end
 
   create_table "favorites", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id",    null: false
@@ -49,6 +64,7 @@ ActiveRecord::Schema.define(version: 20190625074932) do
     t.datetime "updated_at",      null: false
   end
 
+  add_foreign_key "details", "plans"
   add_foreign_key "plans", "users"
   add_foreign_key "relationships", "users"
   add_foreign_key "relationships", "users", column: "follow_id"

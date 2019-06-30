@@ -3,6 +3,7 @@ class Plan < ApplicationRecord
   
   has_many :favorites, dependent: :destroy
   has_many :favoriting_users, through: :favorites, source: :user
+  has_many :details, dependent: :destroy
   
   
   # プランをお気に入りに追加する

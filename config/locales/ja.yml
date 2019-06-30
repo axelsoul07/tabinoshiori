@@ -1,0 +1,14 @@
+ja:
+  activerecord:
+    models:
+      detail: イベント
+    attributes:
+      detail:
+        destination: 行き先、イベント名
+        amount: 一人当たり予算
+        start_at: 予定開始日時
+        end_at: 予定終了日時
+        site_url: サイトURL
+        phone: 電話番号
+        address: 住所
+        map_url: GoogleMapURL

@@ -1,2 +1,63 @@
-h1
-  = @plan.title
+= provide(:title, @plan.title)
+.row
+.col-md-10.col-md-offset-1.top_space
+  .panel.panel-default
+    .panel-heading.text-center
+      h1
+        = @plan.title
+    .panel-body
+      - total = 0
+      - @details.each_with_index do |detail, i|
+        - total+=detail.amount
+        section.plan_container
+          span.arrow
+          h2
+            |<a data-toggle="collapse" href="#detail
+            = i
+            |" class="toggle_arrow collapsed"></a>
+            = detail.destination
+          .text-right.bottom_space
+            - if current_user == @plan.user
+              = link_to '編集', detail_edit_path(@plan, detail), class: 'btn btn-primary btn_detail_new'
+              = link_to "削除", detail_destroy_path(@plan, detail), method: :delete, data: { confirm: "削除してもよろしいですか？" }, class: 'btn btn-danger'
+          |<div id="detail
+          = i
+          |" class="panel-collapse collapse">
+          p
+            |一人当たり予算：
+            = number_to_currency(detail.amount, :format => "%u%n", :unit => "￥")
+            |円
+          p
+            |予定時間：<br>
+            = detail.start_at.strftime("%Y年%m月%d日 %H時%M分")
+            span.time_arrow
+            = detail.end_at.strftime("%Y年%m月%d日 %H時%M分")
+          p
+            |住所：<br>
+            = detail.address
+          p
+            |サイト情報：<br><a href="
+            = detail.site_url
+            |" target="_blank">
+            = detail.site_url
+            |</a>
+          p
+            |電話番号：<br>
+            = detail.phone
+          p
+            |地図情報：
+          |<iframe src="https://maps.google.co.jp/maps?output=embed&q=
+          = detail.address
+          |" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+          p
+            |備考：<br>
+            = simple_format(detail.content)
+          |</div>
+      p
+        |一人当たり総額：
+        = number_to_currency(total, :format => "%u%n", :unit => "￥")
+        |円
+
+- if current_user == @plan.user
+  .text-center
+    = link_to 'イベントの追加', new_detail_path, class: 'btn btn-lg btn-primary btn_detail_new bottom_space'

@@ -14,7 +14,22 @@ Rails.application.routes.draw do
     end
   end
   
-  resources :plans, only: [:create, :destroy, :show]
+  
+  resources :plans, only: [:create, :destroy, :show] do
+    member do
+      resources :details, only: [:new, :create]
+      resources :details do
+        get :show
+        get :edit
+        patch :update
+        put :update
+        delete :destroy
+      end
+    end
+  end
+  
+
+  
   resources :relationships, only: [:create, :destroy]
   resources :favorites, only: [:create, :destroy]
 end

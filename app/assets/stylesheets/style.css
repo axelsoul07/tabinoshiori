@@ -16,9 +16,68 @@
     vertical-align: top;
     margin-right: 10px;
 }
-.favorite {
-    
+.btn_detail_new {
+    margin-right: 20px;
 }
 .glyphicon-star:before {
     color: orange;
+}
+.datetime_form label {
+    display: block;
+}
+.datetime_form select {
+    display: inline-block;
+}
+.datetime_form select {
+    width: 5em;
+}
+.datetime_form select:nth-of-type(1) {
+    width: 6em;
+}
+.datetime_form select:nth-of-type(1):after {
+    content: "年";
+}
+.plan_container h2 { 
+    font-size: 24px;
+}
+.plan_container:nth-child(n+2) .arrow {
+    display: block;
+    width: 30px;
+    height: 30px;
+    border: 5px solid;
+    border-color:  transparent transparent #565656 #565656;
+    transform: rotate(-45deg);
+    margin: 20px auto;
+}
+.toggle_arrow {
+    width: 13px;
+    height: 13px;
+    border: 2px solid;
+    border-color:  transparent transparent #565656 #565656;
+    transform: rotate(-45deg);
+    display: inline-block;
+    margin-bottom: 8px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+.toggle_arrow.collapsed {
+    width: 13px;
+    height: 13px;
+    border: 2px solid;
+    border-color:  transparent transparent #565656 #565656;
+    transform: rotate(-225deg);
+    display: inline-block;
+    margin-bottom: 0px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+.time_arrow {
+    width: 10px;
+    height: 10px;
+    border: 2px solid;
+    border-color:  transparent transparent #565656 #565656;
+    transform: rotate(-45deg);
+    display: block;
+    margin-bottom: 8px;
+    margin-left: 70px;
 }

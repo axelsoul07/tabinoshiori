@@ -1,0 +1,40 @@
+= provide(:title, "プランの追加 | " + @plan.title)
+.row
+.col-md-10.col-md-offset-1.top_space
+  .panel.panel-default
+    .panel-heading.text-center
+      h1
+        = @plan.title
+    .panel-body
+      = form_for(@detail) do |f|
+        = render 'layouts/error_messages', model: f.object
+        .form-group
+          = f.label :destination, '行先、イベント名'
+          = f.text_field :destination, class: 'form-control'
+        .form-group
+          = f.label :amount, '一人当たり予算'
+          = f.text_field :amount, class: 'form-control'
+        .form-group
+          = f.label :content, '内容、備考'
+          = f.text_area :content, class: 'form-control'
+        .form-group.datetime_form
+          = f.label :start_at, '予定開始日時'
+          = f.datetime_select :start_at, {use_month_numbers: true,start_year: 1930, end_year: (Time.now.year + 18)}, class: 'form-control'
+        .form-group.datetime_form
+          = f.label :end_at, '予定終了日時'
+          = f.datetime_select :end_at, {use_month_numbers: true,start_year: 1930, end_year: (Time.now.year + 18)}, class: 'form-control'
+        .form-group
+          = f.label :site_url, 'サイトURL'
+          = f.text_field :site_url, class: 'form-control'
+        .form-group
+          = f.label :telphone, '電話番号'
+          = f.text_field :phone, class: 'form-control'
+        .form-group
+          = f.label :address, '住所'
+          = f.text_field :address, class: 'form-control'
+        .text-center
+          = f.submit '詳細の追加', class: 'btn btn-lg btn-primary btn_detail_new'
+          = link_to plan_path(@plan) do 
+            |旅の栞詳細画面に戻る
+
+   
