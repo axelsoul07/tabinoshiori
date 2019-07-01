@@ -49,6 +49,13 @@ test:
 #
 production:
   <<: *default
+  #database: tabinoshiori_production
+  #username: tabinoshiori
+  #password: <%= ENV['TABINOSHIORI_DATABASE_PASSWORD'] %>
+  
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
   database: tabinoshiori_production
   username: tabinoshiori
   password: <%= ENV['TABINOSHIORI_DATABASE_PASSWORD'] %>

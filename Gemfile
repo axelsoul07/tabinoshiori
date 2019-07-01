@@ -58,3 +58,7 @@ gem 'slim-rails'
 gem 'counter_culture', '~> 1.8'
 
 gem 'rails-i18n'
+
+group :production do
+  gem 'pg', '0.21.0'
+end
