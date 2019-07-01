@@ -15,6 +15,7 @@ class PlansController < ApplicationController
   end
   
   def show
+    require_user_public
     @plan = Plan.find(params[:id])
     @details = @plan.details.order('start_at ASC')
   end
@@ -44,7 +45,7 @@ class PlansController < ApplicationController
   private
   
   def plan_params
-    params.require(:plan).permit(:title)
+    params.require(:plan).permit(:title, :public)
   end
   
   def correct_user
@@ -56,5 +57,12 @@ class PlansController < ApplicationController
   
   def plan_id
     params[:id]
+  end
+  
+  def require_user_public
+    @plan = Plan.find(params[:id])
+    if (current_user != @plan.user_id) && (@plan.public == false)
+      redirect_to root_url
+    end
   end
 end

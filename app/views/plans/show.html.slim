@@ -8,6 +8,12 @@
         .btn_show_favorite
           = render 'favorites/favorite_button', plan: @plan
         - if current_user == @plan.user
+          .public_box
+            span
+              -if @plan.public
+                |公開中
+              -else
+                |非公開
           .btn_show_plan_edit
             = link_to '編集', edit_plan_path(@plan), class: 'btn btn-primary btn_detail_new btn-xs'
     .panel-body
@@ -37,26 +43,32 @@
             = detail.start_at.strftime("%Y年%m月%d日 %H時%M分")
             span.time_arrow
             = detail.end_at.strftime("%Y年%m月%d日 %H時%M分")
-          p
-            |住所：<br>
+          - if (detail.address != "" && detail.address != nil)
+            p
+              |住所：<br>
+              = detail.address
+          - if (detail.site_url != "" && detail.site_url != nil)
+            p
+              |サイト情報：<br><a href="
+              = detail.site_url
+              |" target="_blank">
+              = detail.site_url
+              |</a>
+          - if (detail.phone != "" && detail.phone != nil)
+            p
+              |電話番号：<br>
+              = detail.phone
+          - if (detail.address != "" && detail.address != nil)
+            p
+              |地図情報：
+          
+            |<iframe src="https://maps.google.co.jp/maps?output=embed&q=
             = detail.address
-          p
-            |サイト情報：<br><a href="
-            = detail.site_url
-            |" target="_blank">
-            = detail.site_url
-            |</a>
-          p
-            |電話番号：<br>
-            = detail.phone
-          p
-            |地図情報：
-          |<iframe src="https://maps.google.co.jp/maps?output=embed&q=
-          = detail.address
-          |" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
-          p
-            |備考：<br>
-            = simple_format(detail.content)
+            |" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+          - if (detail.content != "" && detail.content != nil)
+            p
+              |備考：<br>
+              = simple_format(detail.content)
           |</div>
       p
         |一人当たり総額：

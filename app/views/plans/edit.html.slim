@@ -4,9 +4,11 @@
   .panel.panel-default
     .panel-heading.text-center
       h1
-        |旅の栞名修正
+        |旅の栞修正
     .panel-body
       = form_for(@plan) do |f|
         .form-group
           = f.text_field :title, class: 'form-control', rows: 5
+        .form-group
+          = f.select :public, [["公開", true], ["非公開", false]], {}, {class: 'form-control'}
         = f.submit '更新', class: 'btn btn-primary btn-block'

@@ -7,7 +7,13 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @plan = @user.plans.build
-    @plans = @user.plans.order('created_at DESC').page(params[:page])
+    #ログインユーザなら全て表示、そうでなければ公開設定のものだけ表示
+    if (current_user == @user)
+      @plans = @user.plans.order('created_at DESC').page(params[:page])
+    else
+      @plans = @user.plans.where(public: true).order('created_at DESC').page(params[:page])
+    end
+    
     counts(@user)
   end
 

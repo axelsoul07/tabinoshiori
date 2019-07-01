@@ -38,6 +38,10 @@ class User < ApplicationRecord
     Plan.where(user_id: self.following_ids + [self.id])
   end
   
+  def feed_followoing_plans
+    Plan.where(user_id: self.id).or(Plan.where(user_id: self.following_ids).where(public: true))
+  end
+  
   def feed_favorite_plans
     Plan.where(id: self.favoriting_ids)
   end
