@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  before_action :basic if Rails.env.production?
+
   protect_from_forgery with: :exception
   
   include SessionsHelper
@@ -16,4 +18,11 @@ class ApplicationController < ActionController::Base
     @count_followings = user.followings.count
     @count_followers = user.followers.count
   end
+
+  def basic
+    authenticate_or_request_with_http_basic do |user, pass|
+      user == 'tabino' && pass == 'shiori'
+    end
+  end
+
 end
