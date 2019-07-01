@@ -61,7 +61,7 @@ class PlansController < ApplicationController
   
   def require_user_public
     @plan = Plan.find(params[:id])
-    if (current_user != @plan.user_id) && (@plan.public == false)
+    if (current_user.id != @plan.user_id) && (@plan.public == false)
       redirect_to root_url
     end
   end
